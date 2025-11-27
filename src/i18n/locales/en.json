@@ -1,0 +1,122 @@
+{
+  "app": {
+    "title": "Animotion CSS",
+    "description": "CSS Animation Generator"
+  },
+  "tabs": {
+    "creator": "Creator",
+    "history": "History"
+  },
+  "preview": {
+    "title": "Preview",
+    "square": "Square",
+    "circle": "Circle",
+    "text": "Text",
+    "icon": "Icon",
+    "play": "Play",
+    "pause": "Pause"
+  },
+  "animation": {
+    "controls": "Animation Controls",
+    "name": "Animation Name",
+    "duration": "Duration",
+    "timing": "Timing Function",
+    "delay": "Delay",
+    "iterations": "Iterations",
+    "infinite": "Infinite",
+    "direction": "Direction",
+    "directions": {
+      "normal": "Normal",
+      "reverse": "Reverse",
+      "alternate": "Alternate",
+      "alternate-reverse": "Alternate Reverse"
+    },
+    "fillMode": "Fill Mode"
+  },
+  "keyframes": {
+    "title": "Keyframes",
+    "add": "Add Keyframe",
+    "position": "Position",
+    "clickToAdd": "Click to add properties",
+    "selectProperties": "Select properties to animate:"
+  },
+  "properties": {
+    "transform": "Transform",
+    "translateX": "Translate X",
+    "translateY": "Translate Y",
+    "scale": "Scale",
+    "rotate": "Rotate",
+    "skewX": "Skew X",
+    "skewY": "Skew Y",
+    "visual": "Visual",
+    "opacity": "Opacity",
+    "backgroundColor": "Background",
+    "color": "Text Color",
+    "borderRadius": "Border Radius",
+    "boxShadow": "Box Shadow",
+    "custom": "Custom",
+    "customCSS": "Custom CSS"
+  },
+  "presets": {
+    "title": "Presets"
+  },
+  "css": {
+    "output": "CSS Output"
+  },
+  "history": {
+    "title": "History",
+    "empty": "No animations saved yet. Create an animation and copy the CSS to save it here.",
+    "apply": "Apply",
+    "delete": "Delete",
+    "clear": "Clear All"
+  },
+  "help": {
+    "title": "How to Use",
+    "subtitle": "Learn how to create CSS animations with Animotion",
+    "gettingStarted": {
+      "title": "Getting Started",
+      "description": "Animotion CSS helps you create CSS keyframe animations visually. You can start from scratch or use one of the built-in presets to get started quickly."
+    },
+    "presets": {
+      "title": "Using Presets",
+      "description": "Click the 'Presets' button to choose from 15 pre-configured animations like fadeIn, bounce, slide, spin, and more. Presets are a great starting point that you can customize."
+    },
+    "settings": {
+      "title": "Animation Settings",
+      "duration": "Duration",
+      "durationDesc": "How long the animation takes (100ms to 5000ms)",
+      "timing": "Timing Function",
+      "timingDesc": "The acceleration curve (ease, linear, bouncy, etc.)",
+      "delay": "Delay",
+      "delayDesc": "Time to wait before the animation starts",
+      "iterations": "Iterations",
+      "iterationsDesc": "How many times the animation repeats (or infinite)",
+      "direction": "Direction",
+      "directionDesc": "Normal, reverse, or alternating direction",
+      "fillMode": "Fill Mode",
+      "fillModeDesc": "How styles apply before/after the animation"
+    },
+    "keyframes": {
+      "title": "Working with Keyframes",
+      "description": "Keyframes define the animation states at different points (0% to 100%).",
+      "step1": "Click on a keyframe to expand it and see available properties",
+      "step2": "Use checkboxes to enable/disable properties for that keyframe",
+      "step3": "Adjust values using sliders, inputs, or color pickers",
+      "step4": "Click 'Add Keyframe' to create new animation points"
+    },
+    "properties": {
+      "title": "Animatable Properties",
+      "description": "Each keyframe can animate different CSS properties:",
+      "transform": "Transform",
+      "visual": "Visual"
+    },
+    "preview": {
+      "title": "Preview",
+      "description": "Use the preview panel to see your animation in real-time. You can change the preview element shape (square, circle, text, icon) and use play/pause controls."
+    },
+    "history": {
+      "title": "Saving & History",
+      "description": "When you copy the CSS code, your animation is automatically saved to history. You can access saved animations from the History tab and apply them back to the editor anytime."
+    }
+  }
+}

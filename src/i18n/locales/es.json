@@ -1,0 +1,122 @@
+{
+  "app": {
+    "title": "Animotion CSS",
+    "description": "Generador de Animaciones CSS"
+  },
+  "tabs": {
+    "creator": "Creador",
+    "history": "Historial"
+  },
+  "preview": {
+    "title": "Vista Previa",
+    "square": "Cuadrado",
+    "circle": "Circulo",
+    "text": "Texto",
+    "icon": "Icono",
+    "play": "Play",
+    "pause": "Pausar"
+  },
+  "animation": {
+    "controls": "Controles de Animacion",
+    "name": "Nombre de Animacion",
+    "duration": "Duracion",
+    "timing": "Funcion de Tiempo",
+    "delay": "Retraso",
+    "iterations": "Iteraciones",
+    "infinite": "Infinito",
+    "direction": "Direccion",
+    "directions": {
+      "normal": "Normal",
+      "reverse": "Reversa",
+      "alternate": "Alternado",
+      "alternate-reverse": "Alternado Reverso"
+    },
+    "fillMode": "Modo de Relleno"
+  },
+  "keyframes": {
+    "title": "Keyframes",
+    "add": "Agregar Keyframe",
+    "position": "Posicion",
+    "clickToAdd": "Click para agregar propiedades",
+    "selectProperties": "Selecciona propiedades a animar:"
+  },
+  "properties": {
+    "transform": "Transformar",
+    "translateX": "Trasladar X",
+    "translateY": "Trasladar Y",
+    "scale": "Escala",
+    "rotate": "Rotar",
+    "skewX": "Inclinar X",
+    "skewY": "Inclinar Y",
+    "visual": "Visual",
+    "opacity": "Opacidad",
+    "backgroundColor": "Fondo",
+    "color": "Color de Texto",
+    "borderRadius": "Radio de Borde",
+    "boxShadow": "Sombra",
+    "custom": "Personalizado",
+    "customCSS": "CSS Personalizado"
+  },
+  "presets": {
+    "title": "Presets"
+  },
+  "css": {
+    "output": "CSS Generado"
+  },
+  "history": {
+    "title": "Historial",
+    "empty": "Aun no hay animaciones guardadas. Crea una animacion y copia el CSS para guardarla aqui.",
+    "apply": "Aplicar",
+    "delete": "Eliminar",
+    "clear": "Limpiar Todo"
+  },
+  "help": {
+    "title": "Como Usar",
+    "subtitle": "Aprende a crear animaciones CSS con Animotion",
+    "gettingStarted": {
+      "title": "Comenzando",
+      "description": "Animotion CSS te ayuda a crear animaciones CSS con keyframes de forma visual. Puedes empezar desde cero o usar uno de los presets incluidos para comenzar rapidamente."
+    },
+    "presets": {
+      "title": "Usando Presets",
+      "description": "Haz click en el boton 'Presets' para elegir entre 15 animaciones preconfiguradas como fadeIn, bounce, slide, spin y mas. Los presets son un excelente punto de partida que puedes personalizar."
+    },
+    "settings": {
+      "title": "Configuracion de Animacion",
+      "duration": "Duracion",
+      "durationDesc": "Cuanto dura la animacion (100ms a 5000ms)",
+      "timing": "Funcion de Tiempo",
+      "timingDesc": "La curva de aceleracion (ease, linear, bouncy, etc.)",
+      "delay": "Retraso",
+      "delayDesc": "Tiempo de espera antes de iniciar la animacion",
+      "iterations": "Iteraciones",
+      "iterationsDesc": "Cuantas veces se repite la animacion (o infinito)",
+      "direction": "Direccion",
+      "directionDesc": "Normal, reversa o direccion alternada",
+      "fillMode": "Modo de Relleno",
+      "fillModeDesc": "Como se aplican los estilos antes/despues de la animacion"
+    },
+    "keyframes": {
+      "title": "Trabajando con Keyframes",
+      "description": "Los keyframes definen los estados de la animacion en diferentes puntos (0% a 100%).",
+      "step1": "Haz click en un keyframe para expandirlo y ver las propiedades disponibles",
+      "step2": "Usa los checkboxes para activar/desactivar propiedades en ese keyframe",
+      "step3": "Ajusta los valores usando sliders, inputs o selectores de color",
+      "step4": "Haz click en 'Agregar Keyframe' para crear nuevos puntos de animacion"
+    },
+    "properties": {
+      "title": "Propiedades Animables",
+      "description": "Cada keyframe puede animar diferentes propiedades CSS:",
+      "transform": "Transformar",
+      "visual": "Visual"
+    },
+    "preview": {
+      "title": "Vista Previa",
+      "description": "Usa el panel de vista previa para ver tu animacion en tiempo real. Puedes cambiar la forma del elemento (cuadrado, circulo, texto, icono) y usar los controles de play/pausa."
+    },
+    "history": {
+      "title": "Guardado e Historial",
+      "description": "Cuando copias el codigo CSS, tu animacion se guarda automaticamente en el historial. Puedes acceder a las animaciones guardadas desde la pestana Historial y aplicarlas de nuevo al editor en cualquier momento."
+    }
+  }
+}
