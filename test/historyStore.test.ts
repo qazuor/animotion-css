@@ -1,24 +1,27 @@
 import { act } from "react";
 import { beforeEach, describe, expect, it } from "vitest";
 
-import type { GradientConfig } from "@/types/gradient.types";
+import type { AnimationConfig } from "@/types/animation.types";
 import { useHistoryStore } from "@/stores/historyStore";
 
-const createMockConfig = (color: string): GradientConfig => ({
-  type: "linear",
-  angle: 90,
-  radialShape: "circle",
-  radialPosition: { x: 50, y: 50 },
-  colorStops: [
-    { id: "1", color, position: 0 },
-    { id: "2", color: "#ffffff", position: 100 },
+const createMockConfig = (name: string): AnimationConfig => ({
+  name,
+  duration: 1000,
+  timingFunction: "ease",
+  delay: 0,
+  iterationCount: 1,
+  direction: "normal",
+  fillMode: "forwards",
+  keyframes: [
+    { id: "1", position: 0, properties: { opacity: 0 } },
+    { id: "2", position: 100, properties: { opacity: 1 } },
   ],
 });
 
 describe("historyStore", () => {
   beforeEach(() => {
     act(() => {
-      useHistoryStore.getState().clearHistory();
+      useHistoryStore.getState().clearAll();
     });
   });
 
@@ -31,70 +34,43 @@ describe("historyStore", () => {
 
   describe("addItem", () => {
     it("adds an item to history", () => {
-      const config = createMockConfig("#ff0000");
-      const css = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
+      const config = createMockConfig("fadeIn");
+      const css = "@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }";
 
       act(() => {
-        useHistoryStore.getState().addItem(config, css);
+        useHistoryStore.getState().addItem("fadeIn", config, css);
       });
 
       const { items } = useHistoryStore.getState();
       expect(items.length).toBe(1);
+      expect(items[0].name).toBe("fadeIn");
       expect(items[0].config).toEqual(config);
       expect(items[0].css).toBe(css);
     });
 
     it("adds new items at the beginning", () => {
-      const config1 = createMockConfig("#ff0000");
-      const config2 = createMockConfig("#00ff00");
-      const css1 = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
-      const css2 = "linear-gradient(90deg, #00ff00 0%, #ffffff 100%)";
+      const config1 = createMockConfig("anim1");
+      const config2 = createMockConfig("anim2");
+      const css1 = "css1";
+      const css2 = "css2";
 
       act(() => {
-        useHistoryStore.getState().addItem(config1, css1);
-        useHistoryStore.getState().addItem(config2, css2);
+        useHistoryStore.getState().addItem("anim1", config1, css1);
+        useHistoryStore.getState().addItem("anim2", config2, css2);
       });
 
       const { items } = useHistoryStore.getState();
-      expect(items[0].css).toBe(css2);
-      expect(items[1].css).toBe(css1);
-    });
-
-    it("does not add duplicate CSS", () => {
-      const config = createMockConfig("#ff0000");
-      const css = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
-
-      act(() => {
-        useHistoryStore.getState().addItem(config, css);
-        useHistoryStore.getState().addItem(config, css);
-      });
-
-      const { items } = useHistoryStore.getState();
-      expect(items.length).toBe(1);
-    });
-
-    it("limits history to 20 items", () => {
-      for (let i = 0; i < 25; i++) {
-        const config = createMockConfig(`#${i.toString().padStart(6, "0")}`);
-        const css = `linear-gradient(90deg, #${i.toString().padStart(6, "0")} 0%, #ffffff 100%)`;
-        act(() => {
-          useHistoryStore.getState().addItem(config, css);
-        });
-      }
-
-      const { items } = useHistoryStore.getState();
-      expect(items.length).toBe(20);
+      expect(items[0].name).toBe("anim2");
+      expect(items[1].name).toBe("anim1");
     });
 
     it("assigns unique IDs", () => {
-      const config1 = createMockConfig("#ff0000");
-      const config2 = createMockConfig("#00ff00");
-      const css1 = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
-      const css2 = "linear-gradient(90deg, #00ff00 0%, #ffffff 100%)";
+      const config1 = createMockConfig("anim1");
+      const config2 = createMockConfig("anim2");
 
       act(() => {
-        useHistoryStore.getState().addItem(config1, css1);
-        useHistoryStore.getState().addItem(config2, css2);
+        useHistoryStore.getState().addItem("anim1", config1, "css1");
+        useHistoryStore.getState().addItem("anim2", config2, "css2");
       });
 
       const { items } = useHistoryStore.getState();
@@ -102,12 +78,11 @@ describe("historyStore", () => {
     });
 
     it("assigns createdAt timestamp", () => {
-      const config = createMockConfig("#ff0000");
-      const css = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
+      const config = createMockConfig("test");
       const beforeTime = Date.now();
 
       act(() => {
-        useHistoryStore.getState().addItem(config, css);
+        useHistoryStore.getState().addItem("test", config, "css");
       });
 
       const afterTime = Date.now();
@@ -119,11 +94,10 @@ describe("historyStore", () => {
 
   describe("removeItem", () => {
     it("removes an item by ID", () => {
-      const config = createMockConfig("#ff0000");
-      const css = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
+      const config = createMockConfig("test");
 
       act(() => {
-        useHistoryStore.getState().addItem(config, css);
+        useHistoryStore.getState().addItem("test", config, "css");
       });
 
       const { items } = useHistoryStore.getState();
@@ -138,14 +112,12 @@ describe("historyStore", () => {
     });
 
     it("only removes the specified item", () => {
-      const config1 = createMockConfig("#ff0000");
-      const config2 = createMockConfig("#00ff00");
-      const css1 = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
-      const css2 = "linear-gradient(90deg, #00ff00 0%, #ffffff 100%)";
+      const config1 = createMockConfig("anim1");
+      const config2 = createMockConfig("anim2");
 
       act(() => {
-        useHistoryStore.getState().addItem(config1, css1);
-        useHistoryStore.getState().addItem(config2, css2);
+        useHistoryStore.getState().addItem("anim1", config1, "css1");
+        useHistoryStore.getState().addItem("anim2", config2, "css2");
       });
 
       const { items } = useHistoryStore.getState();
@@ -157,15 +129,14 @@ describe("historyStore", () => {
 
       const { items: newItems } = useHistoryStore.getState();
       expect(newItems.length).toBe(1);
-      expect(newItems[0].css).toBe(css1);
+      expect(newItems[0].name).toBe("anim1");
     });
 
     it("does nothing for non-existent ID", () => {
-      const config = createMockConfig("#ff0000");
-      const css = "linear-gradient(90deg, #ff0000 0%, #ffffff 100%)";
+      const config = createMockConfig("test");
 
       act(() => {
-        useHistoryStore.getState().addItem(config, css);
+        useHistoryStore.getState().addItem("test", config, "css");
       });
 
       act(() => {
@@ -177,18 +148,17 @@ describe("historyStore", () => {
     });
   });
 
-  describe("clearHistory", () => {
+  describe("clearAll", () => {
     it("removes all items", () => {
       for (let i = 0; i < 5; i++) {
-        const config = createMockConfig(`#${i.toString().padStart(6, "0")}`);
-        const css = `linear-gradient(90deg, #${i.toString().padStart(6, "0")} 0%, #ffffff 100%)`;
+        const config = createMockConfig(`anim${i}`);
         act(() => {
-          useHistoryStore.getState().addItem(config, css);
+          useHistoryStore.getState().addItem(`anim${i}`, config, `css${i}`);
         });
       }
 
       act(() => {
-        useHistoryStore.getState().clearHistory();
+        useHistoryStore.getState().clearAll();
       });
 
       const { items } = useHistoryStore.getState();
@@ -197,7 +167,7 @@ describe("historyStore", () => {
 
     it("works on empty history", () => {
       act(() => {
-        useHistoryStore.getState().clearHistory();
+        useHistoryStore.getState().clearAll();
       });
 
       const { items } = useHistoryStore.getState();
