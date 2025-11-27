@@ -1,10 +1,6 @@
 import { create } from "zustand";
 
-import {
-  createDefaultKeyframe,
-  generateId,
-  getDefaultConfig,
-} from "@/lib/animation-utils";
+import { createDefaultKeyframe, generateId, getDefaultConfig } from "@/lib/animation-utils";
 import type {
   AnimatableProperties,
   AnimationConfig,
@@ -32,10 +28,7 @@ interface AnimationStore {
   addKeyframe: (position: number) => void;
   removeKeyframe: (id: string) => void;
   updateKeyframe: (id: string, keyframe: Partial<Keyframe>) => void;
-  updateKeyframeProperties: (
-    id: string,
-    properties: Partial<AnimatableProperties>
-  ) => void;
+  updateKeyframeProperties: (id: string, properties: Partial<AnimatableProperties>) => void;
 
   // Preview actions
   setPreviewElement: (element: PreviewElement) => void;
@@ -112,9 +105,7 @@ export const useAnimationStore = create<AnimationStore>((set) => ({
     set((state) => ({
       config: {
         ...state.config,
-        keyframes: state.config.keyframes.map((kf) =>
-          kf.id === id ? { ...kf, ...updates } : kf
-        ),
+        keyframes: state.config.keyframes.map((kf) => (kf.id === id ? { ...kf, ...updates } : kf)),
       },
     })),
 
@@ -123,9 +114,7 @@ export const useAnimationStore = create<AnimationStore>((set) => ({
       config: {
         ...state.config,
         keyframes: state.config.keyframes.map((kf) =>
-          kf.id === id
-            ? { ...kf, properties: { ...kf.properties, ...properties } }
-            : kf
+          kf.id === id ? { ...kf, properties: { ...kf.properties, ...properties } } : kf
         ),
       },
     })),

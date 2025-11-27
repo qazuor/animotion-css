@@ -14,10 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { useAnimationStore } from "@/stores/animationStore";
-import type {
-  AnimationDirection,
-  AnimationFillMode,
-} from "@/types/animation.types";
+import type { AnimationDirection, AnimationFillMode } from "@/types/animation.types";
 
 import { KeyframeEditor } from "./KeyframeEditor";
 import { PresetSelector } from "./PresetSelector";
@@ -42,12 +39,7 @@ const timingFunctions = [
   { label: "Swing", value: "cubic-bezier(0.02, 0.01, 0.47, 1)" },
 ];
 
-const directions: AnimationDirection[] = [
-  "normal",
-  "reverse",
-  "alternate",
-  "alternate-reverse",
-];
+const directions: AnimationDirection[] = ["normal", "reverse", "alternate", "alternate-reverse"];
 
 const fillModes: AnimationFillMode[] = ["none", "forwards", "backwards", "both"];
 
@@ -100,13 +92,11 @@ export function AnimationControls() {
             {/* Timing Function */}
             <div className="space-y-2">
               <Label>{t("animation.timing")}</Label>
-              <Select
-                value={config.timingFunction}
-                onValueChange={setTimingFunction}
-              >
+              <Select value={config.timingFunction} onValueChange={setTimingFunction}>
                 <SelectTrigger>
                   <SelectValue>
-                    {timingFunctions.find((fn) => fn.value === config.timingFunction)?.label || config.timingFunction}
+                    {timingFunctions.find((fn) => fn.value === config.timingFunction)?.label ||
+                      config.timingFunction}
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -142,9 +132,7 @@ export function AnimationControls() {
               <Select
                 value={String(config.iterationCount)}
                 onValueChange={(value) =>
-                  setIterationCount(
-                    value === "infinite" ? "infinite" : Number(value)
-                  )
+                  setIterationCount(value === "infinite" ? "infinite" : Number(value))
                 }
               >
                 <SelectTrigger>
@@ -153,9 +141,7 @@ export function AnimationControls() {
                 <SelectContent>
                   {iterationOptions.map((option) => (
                     <SelectItem key={String(option)} value={String(option)}>
-                      {option === "infinite"
-                        ? t("animation.infinite")
-                        : option}
+                      {option === "infinite" ? t("animation.infinite") : option}
                     </SelectItem>
                   ))}
                 </SelectContent>

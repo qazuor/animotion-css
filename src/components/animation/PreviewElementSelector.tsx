@@ -21,9 +21,7 @@ const elementIcons: Record<PreviewElement, typeof Square> = {
 export function PreviewElementSelector() {
   const { t } = useTranslation();
   const previewElement = useAnimationStore((state) => state.previewElement);
-  const setPreviewElement = useAnimationStore(
-    (state) => state.setPreviewElement
-  );
+  const setPreviewElement = useAnimationStore((state) => state.setPreviewElement);
 
   const CurrentIcon = elementIcons[previewElement];
 
@@ -39,10 +37,7 @@ export function PreviewElementSelector() {
         {(Object.keys(elementIcons) as PreviewElement[]).map((element) => {
           const Icon = elementIcons[element];
           return (
-            <DropdownMenuItem
-              key={element}
-              onClick={() => setPreviewElement(element)}
-            >
+            <DropdownMenuItem key={element} onClick={() => setPreviewElement(element)}>
               <Icon size={16} className="mr-2" />
               {t(`preview.${element}`)}
             </DropdownMenuItem>

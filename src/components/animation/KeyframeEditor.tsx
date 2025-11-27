@@ -5,11 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useAnimationStore } from "@/stores/animationStore";
 
 import { KeyframeItem } from "./KeyframeItem";
@@ -21,9 +17,7 @@ export function KeyframeEditor() {
   const keyframes = useAnimationStore((state) => state.config.keyframes);
   const addKeyframe = useAnimationStore((state) => state.addKeyframe);
 
-  const sortedKeyframes = [...keyframes].sort(
-    (a, b) => a.position - b.position
-  );
+  const sortedKeyframes = [...keyframes].sort((a, b) => a.position - b.position);
 
   const handleAddKeyframe = () => {
     addKeyframe(newPosition);

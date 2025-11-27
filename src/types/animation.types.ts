@@ -23,19 +23,9 @@ export interface Keyframe {
   properties: AnimatableProperties;
 }
 
-export type TimingFunction =
-  | "linear"
-  | "ease"
-  | "ease-in"
-  | "ease-out"
-  | "ease-in-out"
-  | string;
+export type TimingFunction = "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out" | string;
 
-export type AnimationDirection =
-  | "normal"
-  | "reverse"
-  | "alternate"
-  | "alternate-reverse";
+export type AnimationDirection = "normal" | "reverse" | "alternate" | "alternate-reverse";
 
 export type AnimationFillMode = "none" | "forwards" | "backwards" | "both";
 

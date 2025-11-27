@@ -41,9 +41,7 @@ export function HistoryItem({ item, onApply }: HistoryItemProps) {
   // Generate animation CSS for mini preview
   const keyframesCSS = generateKeyframesCSS(item.config.name, item.config.keyframes);
   const iterationCount =
-    item.config.iterationCount === "infinite"
-      ? "infinite"
-      : String(item.config.iterationCount);
+    item.config.iterationCount === "infinite" ? "infinite" : String(item.config.iterationCount);
 
   const animationStyle = isPlaying
     ? {
@@ -63,12 +61,7 @@ export function HistoryItem({ item, onApply }: HistoryItemProps) {
           </div>
 
           <div className="flex gap-1 mt-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleApply}
-              className="gap-1"
-            >
+            <Button variant="outline" size="sm" onClick={handleApply} className="gap-1">
               <ArrowUpRight size={14} />
               {t("history.apply")}
             </Button>

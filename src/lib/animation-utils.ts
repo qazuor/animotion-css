@@ -1,8 +1,4 @@
-import type {
-  AnimatableProperties,
-  AnimationConfig,
-  Keyframe,
-} from "@/types/animation.types";
+import type { AnimatableProperties, AnimationConfig, Keyframe } from "@/types/animation.types";
 
 function propertiesToCSS(properties: AnimatableProperties): string {
   const rules: string[] = [];
@@ -60,13 +56,8 @@ function propertiesToCSS(properties: AnimatableProperties): string {
   return rules.join("; ");
 }
 
-export function generateKeyframesCSS(
-  name: string,
-  keyframes: Keyframe[]
-): string {
-  const sortedKeyframes = [...keyframes].sort(
-    (a, b) => a.position - b.position
-  );
+export function generateKeyframesCSS(name: string, keyframes: Keyframe[]): string {
+  const sortedKeyframes = [...keyframes].sort((a, b) => a.position - b.position);
 
   const keyframeRules = sortedKeyframes
     .map((kf) => {
@@ -80,9 +71,7 @@ export function generateKeyframesCSS(
 
 export function generateAnimationProperty(config: AnimationConfig): string {
   const iterationCount =
-    config.iterationCount === "infinite"
-      ? "infinite"
-      : String(config.iterationCount);
+    config.iterationCount === "infinite" ? "infinite" : String(config.iterationCount);
 
   return `animation: ${config.name} ${config.duration}ms ${config.timingFunction} ${config.delay}ms ${iterationCount} ${config.direction} ${config.fillMode}`;
 }

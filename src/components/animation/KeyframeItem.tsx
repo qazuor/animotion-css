@@ -51,36 +51,29 @@ export function KeyframeItem({ keyframe, canDelete, defaultExpanded = false }: K
     .map(([key]) => key as keyof AnimatableProperties);
 
   return (
-    <div className={cn(
-      "border rounded-lg overflow-hidden transition-colors",
-      isExpanded ? "border-primary/50 bg-primary/5" : "border-border/50"
-    )}>
+    <div
+      className={cn(
+        "border rounded-lg overflow-hidden transition-colors",
+        isExpanded ? "border-primary/50 bg-primary/5" : "border-border/50"
+      )}
+    >
       {/* Header */}
-      <div
+      <button
+        type="button"
         className={cn(
-          "flex items-center gap-2 p-3 cursor-pointer transition-colors",
+          "flex w-full items-center gap-2 p-3 cursor-pointer transition-colors text-left",
           isExpanded ? "bg-primary/10" : "bg-muted/30 hover:bg-muted/50"
         )}
         onClick={() => setIsExpanded(!isExpanded)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            setIsExpanded(!isExpanded);
-          }
-        }}
       >
         <ChevronDown
           size={16}
-          className={cn(
-            "transition-transform shrink-0",
-            isExpanded && "rotate-180"
-          )}
+          className={cn("transition-transform shrink-0", isExpanded && "rotate-180")}
         />
 
         {/* Position display */}
         <div className="flex items-center gap-2 min-w-[80px]">
-          <span className="text-lg font-bold text-primary">
-            {keyframe.position}%
-          </span>
+          <span className="text-lg font-bold text-primary">{keyframe.position}%</span>
         </div>
 
         {/* Active properties badges */}
@@ -114,14 +107,11 @@ export function KeyframeItem({ keyframe, canDelete, defaultExpanded = false }: K
             <Trash2 size={14} />
           </Button>
         )}
-      </div>
+      </button>
 
       {/* Expanded content */}
       {isExpanded && (
-        <div
-          className="border-t border-primary/20"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="border-t border-primary/20">
           {/* Position slider */}
           <div className="p-3 bg-muted/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
             <Label className="text-xs text-muted-foreground shrink-0">
@@ -149,13 +139,8 @@ export function KeyframeItem({ keyframe, canDelete, defaultExpanded = false }: K
 
           {/* Properties */}
           <div className="p-4">
-            <p className="text-xs text-muted-foreground mb-3">
-              {t("keyframes.selectProperties")}
-            </p>
-            <PropertyEditor
-              keyframeId={keyframe.id}
-              properties={keyframe.properties}
-            />
+            <p className="text-xs text-muted-foreground mb-3">{t("keyframes.selectProperties")}</p>
+            <PropertyEditor keyframeId={keyframe.id} properties={keyframe.properties} />
           </div>
         </div>
       )}

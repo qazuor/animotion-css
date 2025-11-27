@@ -19,9 +19,7 @@ export function AnimationPreview() {
   const keyframesCSS = generateKeyframesCSS(config.name, config.keyframes);
 
   const iterationCount =
-    config.iterationCount === "infinite"
-      ? "infinite"
-      : String(config.iterationCount);
+    config.iterationCount === "infinite" ? "infinite" : String(config.iterationCount);
 
   const animationStyle = isPlaying
     ? {
@@ -32,30 +30,16 @@ export function AnimationPreview() {
       };
 
   const renderPreviewElement = () => {
-    const baseClasses =
-      "transition-colors bg-gradient-to-br from-primary to-primary/60";
+    const baseClasses = "transition-colors bg-gradient-to-br from-primary to-primary/60";
 
     switch (previewElement) {
       case "square":
-        return (
-          <div
-            className={`w-20 h-20 rounded-lg ${baseClasses}`}
-            style={animationStyle}
-          />
-        );
+        return <div className={`w-20 h-20 rounded-lg ${baseClasses}`} style={animationStyle} />;
       case "circle":
-        return (
-          <div
-            className={`w-20 h-20 rounded-full ${baseClasses}`}
-            style={animationStyle}
-          />
-        );
+        return <div className={`w-20 h-20 rounded-full ${baseClasses}`} style={animationStyle} />;
       case "text":
         return (
-          <div
-            className="text-4xl font-bold text-primary"
-            style={animationStyle}
-          >
+          <div className="text-4xl font-bold text-primary" style={animationStyle}>
             Animotion
           </div>
         );

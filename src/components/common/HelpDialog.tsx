@@ -45,12 +45,26 @@ export function HelpDialog() {
             <section>
               <h3 className="font-semibold text-base mb-2">{t("help.settings.title")}</h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                <li><strong>{t("help.settings.duration")}</strong>: {t("help.settings.durationDesc")}</li>
-                <li><strong>{t("help.settings.timing")}</strong>: {t("help.settings.timingDesc")}</li>
-                <li><strong>{t("help.settings.delay")}</strong>: {t("help.settings.delayDesc")}</li>
-                <li><strong>{t("help.settings.iterations")}</strong>: {t("help.settings.iterationsDesc")}</li>
-                <li><strong>{t("help.settings.direction")}</strong>: {t("help.settings.directionDesc")}</li>
-                <li><strong>{t("help.settings.fillMode")}</strong>: {t("help.settings.fillModeDesc")}</li>
+                <li>
+                  <strong>{t("help.settings.duration")}</strong>: {t("help.settings.durationDesc")}
+                </li>
+                <li>
+                  <strong>{t("help.settings.timing")}</strong>: {t("help.settings.timingDesc")}
+                </li>
+                <li>
+                  <strong>{t("help.settings.delay")}</strong>: {t("help.settings.delayDesc")}
+                </li>
+                <li>
+                  <strong>{t("help.settings.iterations")}</strong>:{" "}
+                  {t("help.settings.iterationsDesc")}
+                </li>
+                <li>
+                  <strong>{t("help.settings.direction")}</strong>:{" "}
+                  {t("help.settings.directionDesc")}
+                </li>
+                <li>
+                  <strong>{t("help.settings.fillMode")}</strong>: {t("help.settings.fillModeDesc")}
+                </li>
               </ul>
             </section>
 
@@ -77,7 +91,9 @@ export function HelpDialog() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">{t("help.properties.visual")}</p>
-                  <p className="text-xs">opacity, backgroundColor, color, borderRadius, boxShadow</p>
+                  <p className="text-xs">
+                    opacity, backgroundColor, color, borderRadius, boxShadow
+                  </p>
                 </div>
               </div>
             </section>

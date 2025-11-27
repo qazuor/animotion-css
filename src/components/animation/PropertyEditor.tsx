@@ -36,10 +36,7 @@ function PropertyRow({ label, value, defaultValue, onChange, children }: Propert
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <Checkbox
-          checked={isEnabled}
-          onCheckedChange={handleToggle}
-        />
+        <Checkbox checked={isEnabled} onCheckedChange={handleToggle} />
         <Label
           className={cn(
             "text-xs cursor-pointer select-none",
@@ -57,14 +54,9 @@ function PropertyRow({ label, value, defaultValue, onChange, children }: Propert
 
 export function PropertyEditor({ keyframeId, properties }: PropertyEditorProps) {
   const { t } = useTranslation();
-  const updateKeyframeProperties = useAnimationStore(
-    (state) => state.updateKeyframeProperties
-  );
+  const updateKeyframeProperties = useAnimationStore((state) => state.updateKeyframeProperties);
 
-  const handleChange = (
-    key: keyof AnimatableProperties,
-    value: string | number | undefined
-  ) => {
+  const handleChange = (key: keyof AnimatableProperties, value: string | number | undefined) => {
     updateKeyframeProperties(keyframeId, { [key]: value });
   };
 

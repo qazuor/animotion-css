@@ -25,10 +25,7 @@ export function PresetSelector() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-h-[300px] overflow-y-auto">
         {animationPresets.map((preset) => (
-          <DropdownMenuItem
-            key={preset.id}
-            onClick={() => loadPreset(preset)}
-          >
+          <DropdownMenuItem key={preset.id} onClick={() => loadPreset(preset)}>
             {preset.name}
           </DropdownMenuItem>
         ))}
